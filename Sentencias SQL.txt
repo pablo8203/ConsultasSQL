@@ -1,0 +1,75 @@
+SELECT * FROM Operario      // seleccionamos todo de la tabla
+ 
+
+SELECT * FROM Operario where OpNombre='Pablo'      // seleccionamos solo, lo que cumpla la condicion del Where
+
+
+// insertamos un registro en la tabla operario
+
+INSERT INTO Operario(OpDNI,OpNombre,OpApellido,OpDomicilio,OpFecNac) VALUES (36756099,'Roberto','Jeldrez','Sarmiento 4500',25/03/2000); 
+
+// ordenamos de forma ascendente y descendente
+
+SELECT * FROM Operario 
+	ORDER BY OpDNI DESC;
+
+SELECT * FROM Operario 
+	ORDER BY OpDNI ASC;
+
+-------------
+
+actualizamos datos
+
+UPDATE Operario SET OpNombre = 'Daniel' WHERE OpDNI = 256;
+
+----------
+
+CAMBIAMOS DE TABLA
+
+SELECT * FROM Producto
+
+
+--------En donde expresión1 y expresión2 son las condiciones a evaluar, el resultado de la operación varía en función del operador lógico:
+
+
+SELECT * FROM Producto WHERE ProdPrecio > 1 AND ProdPrecio < 5; 
+ 
+
+SELECT * FROM Producto WHERE ProdPrecio >= 1 AND ProdPrecio < 5;
+
+
+--------Donde seleccione todo lo que NO sea plastico 
+
+
+SELECT * FROM Producto WHERE NOT ProdTipo = 'Plastico';
+
+
+---Una sentencia DELETE de SQL borra uno o más registros existentes en una tabla.
+
+
+DELETE FROM Producto WHERE ProdPrecio = 7
+
+
+DELETE FROM Producto  // ojo que borra toda la tabla 
+
+------------
+
+INSERT INTO Operario(OpDNI,OpNombre,OpApellido,OpDomicilio,OpFecNac) VALUES (36756095,'Roberto','Jeldrez','Sarmiento 4500',25/03/2000); 
+INSERT INTO Operario(OpDNI,OpNombre,OpApellido,OpDomicilio,OpFecNac) VALUES (36226095,'Jose','Jeldrez','Sarmiento 4500',25/03/2000); 
+INSERT INTO Operario(OpDNI,OpNombre,OpApellido,OpDomicilio,OpFecNac) VALUES (36756095,'Maria','Jelez','Sarmiento 40',25/03/2000); 
+
+
+-----
+
+INSERT INTO Producto(ProdId,ProdPrecio,ProdTipo,ProDesc) VALUES (2,'1','Plastico','Plastico Verde'); 
+INSERT INTO Producto(ProdId,ProdPrecio,ProdTipo,ProDesc) VALUES (3,'3','Plastico','Plastico Verde'); 
+INSERT INTO Producto(ProdId,ProdPrecio,ProdTipo,ProDesc) VALUES (4,'6','Plastico','Plastico Verde'); 
+INSERT INTO Producto(ProdId,ProdPrecio,ProdTipo,ProDesc) VALUES (5,'8','Celuloso','Carton Corrugado'); 
+INSERT INTO Producto(ProdId,ProdPrecio,ProdTipo,ProDesc) VALUES (6,'8','Celuloso','Carton Corrugado'); 
+INSERT INTO Producto(ProdId,ProdPrecio,ProdTipo,ProDesc) VALUES (7,'9','Celuloso','Carton'); 
+INSERT INTO Producto(ProdId,ProdPrecio,ProdTipo,ProDesc) VALUES (8,'3','Celuloso','Carton Prensado'); 
+INSERT INTO Producto(ProdId,ProdPrecio,ProdTipo,ProDesc) VALUES (9,'9','Celuloso','Plastico Verde'); 
+INSERT INTO Producto(ProdId,ProdPrecio,ProdTipo,ProDesc) VALUES (10,'4','Plastico','Plastico azul'); 
+INSERT INTO Producto(ProdId,ProdPrecio,ProdTipo,ProDesc) VALUES (11,'5','Plastico','Plastico blanco'); 
+INSERT INTO Producto(ProdId,ProdPrecio,ProdTipo,ProDesc) VALUES (12,'3','Plastico','Plastico azul'); 
+ 

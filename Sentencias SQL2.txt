@@ -1,0 +1,101 @@
+User: root
+Pass: pabLo987$
+
+----------
+
+crear DB
+
+CREATE DATABASE consultorio; 
+
+-----------------------
+vamos a crear la primera tabla, que sera pacientes.
+Recuerden lo que vimos en Lucidchart, recordemos los atributos
+
+use consultorio; 
+
+CREATE TABLE Pacientes
+ (
+ PacienteDNI int  primary key not null,
+ PacienteNom varchar (25),
+ PacienteApe Varchar (25),
+ PacienteEdad int)
+ENGINE = INNODB;
+--------------------
+
+CREATE TABLE medicos
+ (
+ MedicoMat int  primary key not null,
+ MedicoNom varchar (25),
+ MedicoApe Varchar (25),
+ MedicoEsp Varchar (25))
+ENGINE = INNODB;
+
+--------------------
+
+CREATE TABLE HC
+ (
+ HCNum int  primary key not null,
+ Fecha DATETIME,
+FOREIGN KEY (PacienteDNI) REFERENCES pacientes(PacienteDNI),
+FOREIGN KEY (PacienteNom) REFERENCES pacientes(PacienteNom),
+FOREIGN KEY (MedicoMat) REFERENCES medicos(MedicoMat),
+FOREIGN KEY (MedicoNom) REFERENCES medicos(MedicoNom),
+Diagnostico varchar (25),
+Tratamiento varchar (25))
+ENGINE = INNODB;
+
+ALTER TABLE HC ADD FOREIGN KEY (PacienteDNI) REFERENCES pacientes(PacienteDNI);
+
+
+----------
+
+INSERT INTO pacientes (PacienteDNI, PacienteNom, PacienteApe, PacienteEdad) VALUES  ('0101', 'Franklin1', 'Garcia', '25');
+INSERT INTO pacientes (PacienteDNI, PacienteNom, PacienteApe, PacienteEdad) VALUES  ('0102', 'Jose', 'Gonzalez', '56');
+INSERT INTO pacientes (PacienteDNI, PacienteNom, PacienteApe, PacienteEdad) VALUES  ('0103', 'Maria', 'Roig', '14');
+INSERT INTO pacientes (PacienteDNI, PacienteNom, PacienteApe, PacienteEdad) VALUES  ('0104', 'Luis', 'Rodriguez', '45');
+INSERT INTO pacientes (PacienteDNI, PacienteNom, PacienteApe, PacienteEdad) VALUES  ('0105', 'Daniel', 'Vega', '33');
+
+
+
+---------------------------------------------
+
+FUNCIONA CON CLAVES FORANEAS Y MODELO RELACIONAL
+
+
+CREATE DATABASE IF NOT EXISTS consultorio;
+use consultorio; 
+
+CREATE TABLE  paciente(
+PacDNI INT(10) NOT NULL,
+PacNom VARCHAR(30) NOT NULL,
+PacApe VARCHAR(30) NOT NULL,
+PRIMARY KEY(PacDNI)
+) ENGINE=innodb;
+
+CREATE TABLE  medico(
+MedMat INT(10) NOT NULL,
+MedNom VARCHAR(30) NOT NULL,
+MedApe VARCHAR(30) NOT NULL,
+MedEsp VARCHAR(30) NOT NULL,
+PRIMARY KEY(MedMat)
+) ENGINE=innodb;
+
+CREATE TABLE IF NOT EXISTS hc(
+HCNum INT(5) NOT NULL,
+HCFecIng DATE NOT NULL,
+PRIMARY KEY(HCNum),
+HCPacDNI INT(10) NOT NULL,
+FOREIGN KEY(HCPacDNI) REFERENCES paciente(PacDNI)ON DELETE CASCADE ON UPDATE CASCADE,
+HCMedMat INT(10) NOT NULL,
+FOREIGN KEY(HCMedMat) REFERENCES medico(MedMat)ON DELETE CASCADE ON UPDATE CASCADE,
+HCDiag VARCHAR(30) NOT NULL,
+HCTrat VARCHAR(30) NOT NULL
+) ENGINE=innodb;
+
+
+---------------------
+
+CARGAR LA NUEVA DB
+
+INSERT INTO paciente (PacDNI,PacNom,PacApe) VALUES  ('0101', 'Jose', 'Garcia');
+INSERT INTO paciente (PacDNI,PacNom,PacApe) VALUES  ('0102', 'Luis', 'pEREZ');

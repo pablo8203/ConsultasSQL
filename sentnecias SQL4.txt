@@ -1,0 +1,71 @@
+pabLo987$
+
+--
+
+Crear tabla
+
+create table pacientes(
+PacDNI int(10)not null,
+PacNom varchar(30) not null,
+PacApe varchar(30) not null,
+primary key(PacDNI)) engine=innodb;
+
+insertar datos
+
+insert into pacientes (PacDNI,PacNom,PacApe) values ('1','Jose','Garcia');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('8','Jose','Garcia');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('2','Mario','Garcia');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('3','Andres','Garcia');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('4','Cristian','Perez');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('5','David','Gonzalez');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('6','Elias','Garcia');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('7','Gerardo','Garcia');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('9','Javier','Rodriguez');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('10','Joaquin','Garcia');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('12','Leandro','Alvarez');
+--
+
+select * from pacientes;
+
+--
+
+ordenar por..
+
+select * from pacientes
+order by PacDNI desc;
+
+--
+filtrar:
+
+select * from pacientes where not PacApe ='Garcia';
+
+----
+
+actualizar datos
+
+update pacientes set PacNom ='Pablo' where PacDNI = '3';
+
+---
+tabla medicos
+
+create table medicos(
+MedMat int(10)not null,
+MedNom varchar(30) not null,
+MedEsp varchar(30) not null,
+primary key(MedMat)) engine=innodb;
+
+---------
+
+create table HC(
+HCNro int(10)not null,
+HCFecIng date not null,
+HCHorIng datetime not null,
+primary key(HCNro), 
+HCPacDNI int(10)not null,
+foreign key(HCPacDNI) references pacientes (PacDNI) on delete cascade on update cascade,
+HCMedMat int(10)not null,
+foreign key(HCMedMat) references medicos (MedMat) on delete cascade on update cascade,
+HCDiag varchar(50)not null,
+HCTrat varchar(50)not null,
+HCRem varchar(50)not null) engine=innodb;
+

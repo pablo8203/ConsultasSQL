@@ -1,0 +1,113 @@
+pabLo987$
+
+---
+crear una DB
+create database nombre de la DB
+----
+
+crear una tabla
+use consultorio; // comando me indica que DB usar
+
+create table pacientes(
+PacDNI int(10) not null,
+PacNom varchar(30) not null,
+PacApe varchar(30) not null,
+primary key(PacDNI)
+) ENGINE=innodb;
+
+----
+
+agregar datos a la tabla
+
+insert into pacientes (PacDNI,PacNom,PacApe) values ('30987654','Facundo','Maza');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('30987655','Jose','Garcia');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('30987656','Maria','Perez');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('30987657','Miguel','Gonzalez');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('30987658','Fernando','Rodroiguez');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('30987659','Analia','Minuti');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('30987650','Pablo','Pardel');
+insert into pacientes (PacDNI,PacNom,PacApe) values ('30987452','Belen','Montes');
+
+-----
+
+ordenar por 
+
+select * from  pacientes
+order by PacDNI asc;
+
+select * from  pacientes
+order by PacDNI desc;
+
+-------------
+
+actualizar 
+
+update pacientes set PacNom = 'Javier' where PacDNI = 30987654;
+
+---
+
+select * from pacientes where PacNom = 'Miguel';
+
+
+---
+
+creacion paso a paso
+
+create database consultorio;
+
+use consultorio;
+
+crear las tablas
+
+paciente:
+
+create table paciente(
+PacDNI int(10) not null, 
+PacNom varchar(30) not null, 
+PacApe varchar(30) not null,
+primary key(PacDNI))
+ENGINE=innodb;
+
+medicos:
+
+create table medico(
+MedMat int(10) not null, 
+MedNom varchar(30) not null, 
+MedEsp varchar(30) not null,
+primary key(MedMat))
+ENGINE=innodb;
+
+----
+
+
+tabla HC
+
+create table hc(
+HCNum int(10) not null, 
+HCFecIng date not null,
+primary key(HCNum),
+HCPacDNI int(10) not null, 
+foreign key(HCPacDNI) references paciente(PacDNI) on delete cascade on update cascade,
+HCMedMat int(10) not null, 
+foreign key(HCMedMat) references medico(MedMat) on delete cascade on update cascade,
+HCDiag varchar(30) not null,
+HCTrat varchar(30) not null
+)ENGINE=innodb;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
