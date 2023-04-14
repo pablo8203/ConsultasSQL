@@ -1,0 +1,92 @@
+TP11 - 
+
+Realizar el modelo en Lucidchart
+
+---
+En MySQL
+
+crear db
+
+create database qatar2022;
+
+use qatar2022;
+
+--  crear la tabla depto
+
+create table departamento(
+DepNro int(8) not null,
+DepNom varchar(30) not null,
+DepPres int(8) not null,
+primary key (DepNro)) engine=innodb;
+
+---
+
+crear tabla empleados
+
+create table empleados(
+EmpDni int(8) not null,
+EmpNom varchar(30) not null,
+EmpApe varchar(30) not null,
+EmpNac varchar(30) not null,
+primary key (EmpDni),
+EmpDep int(8), 
+foreign key (EmpDep) references departamento(DepNro) on delete no action on update no action
+) engine=innodb;
+
+-----
+
+
+tp12
+
+punto1
+
+primeri debo caargar la tabla depto para agrgar empleados
+
+insert into departamento(DepNro,DepNom,DepPres) values ('6','Compras','6000');
+insert into departamento(DepNro,DepNom,DepPres) values ('2','RRHH','2000');
+insert into departamento(DepNro,DepNom,DepPres) values ('3','Sistemas','8000');
+insert into departamento(DepNro,DepNom,DepPres) values ('4','Legal','4000');
+insert into departamento(DepNro,DepNom,DepPres) values ('5','Ventas','1000');
+
+carga de empleados en la tabla
+
+
+insert into empleados(EmpDni,EmpNom,EmpApe,EmpNac,EmpDep) values ('1','Luis','Gonzalez','Argentina','1');
+insert into empleados(EmpDni,EmpNom,EmpApe,EmpNac,EmpDep) values ('2','Maria','Gomez','Brasil','3');
+insert into empleados(EmpDni,EmpNom,EmpApe,EmpNac,EmpDep) values ('3','Josefina','Suarez','Chile','5');
+insert into empleados(EmpDni,EmpNom,EmpApe,EmpNac,EmpDep) values ('777','Lucia','Paez','Uruguay','3');
+insert into empleados(EmpDni,EmpNom,EmpApe,EmpNac,EmpDep) values ('987','Dante','Alvarez','Argentina','2');
+insert into empleados(EmpDni,EmpNom,EmpApe,EmpNac,EmpDep) values ('234','Daniel','Perez','Argentina','1');
+
+
+----------
+
+
+punto 2
+
+update empleados set EmpNac = 'Español' where EmpDni= 12;
+
+
+------
+
+punto 3
+
+delete from departamento where DepNro=6; (ver tema de integridad referencial antes de eliminar)
+
+no puedo eliminar una tabla que contenga informacion vinculada.
+
+---
+
+
+punto 4
+
+empleados que trabajan en logistcia
+
+select * from empleados where EmpDep=1;
+
+---
+
+punto 5
+
+select * from departamento
+order by DepNom desc;
